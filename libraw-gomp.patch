@@ -1,0 +1,32 @@
+diff -aurN LibRaw-0.13.4.orig/libraw.pc.in LibRaw-0.13.4/libraw.pc.in
+--- LibRaw-0.13.4.orig/libraw.pc.in	2011-04-17 12:33:30.000000000 +0200
++++ LibRaw-0.13.4/libraw.pc.in	2011-04-17 12:38:34.000000000 +0200
+@@ -7,5 +7,5 @@
+ Description: Raw image decoder library (non-thread-safe)
+ Requires: @PACKAGE_REQUIRES@
+ Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -lraw -lstdc++@PC_OPENMP@
++Libs: -L${libdir} -lraw -lstdc++ -lgomp@PC_OPENMP@
+ Cflags: -I${includedir}/libraw
+diff -aurN LibRaw-0.13.4.orig/libraw_r.pc.in LibRaw-0.13.4/libraw_r.pc.in
+--- LibRaw-0.13.4.orig/libraw_r.pc.in	2011-04-17 12:33:30.000000000 +0200
++++ LibRaw-0.13.4/libraw_r.pc.in	2011-04-17 12:38:44.000000000 +0200
+@@ -7,5 +7,5 @@
+ Description: Raw image decoder library (thread-safe)
+ Requires: @PACKAGE_REQUIRES@
+ Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -lraw -lstdc++@PC_OPENMP@
++Libs: -L${libdir} -lraw -lstdc++ -lgomp@PC_OPENMP@
+ Cflags: -I${includedir}/libraw
+diff -aurN LibRaw-0.13.4.orig/Makefile.am LibRaw-0.13.4/Makefile.am
+--- LibRaw-0.13.4.orig/Makefile.am	2011-04-17 12:33:30.000000000 +0200
++++ LibRaw-0.13.4/Makefile.am	2011-04-17 12:56:40.000000000 +0200
+@@ -45,6 +45,8 @@
+ lib_libraw_la_LDFLAGS = -no-undefined -version-info $(LIBRAW_SHLIB_VER)
+ lib_libraw_r_la_LDFLAGS = -no-undefined -version-info $(LIBRAW_SHLIB_VER)
+ 
++lib_libraw_la_LIBADD= -lgomp
++lib_libraw_r_la_LIBADD = -lgomp
+ 
+ # Sample binaries
+ if EXAMPLES
