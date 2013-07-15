@@ -1,14 +1,13 @@
 Summary:	Librarized dcraw
 Name:		libraw
-Version:	0.14.7
+Version:	0.15.3
 Release:	1
 License:	GPL v3
 Group:		Libraries
 Source0:	http://www.libraw.org/data/LibRaw-%{version}.tar.gz
-# Source0-md5:	8b622d82c927d8975c22ee4316584ebd
+# Source0-md5:	61b401bfab23ae27fa437a966717acae
 Source1:	http://www.libraw.org/data/LibRaw-demosaic-pack-GPL3-%{version}.tar.gz
-# Source1-md5:	5fc14ee1fd66562cff3ee6895ca541a9
-Patch0:		%{name}-gomp.patch
+# Source1-md5:	9eabb8ee14239b6ff60c700e8d8b79cf
 URL:		http://www.libraw.org
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -32,7 +31,6 @@ Development files for %{name}
 
 %prep
 %setup -qn LibRaw-%{version} -a1
-%patch0 -p1
 
 %build
 %{__libtoolize}
